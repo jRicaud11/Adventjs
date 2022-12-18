@@ -40,24 +40,13 @@ The boxes may come in any order.
 The boxes are not always squares, they could be rectangles.
 */
 
-interface Gifts {
-  l: number;
-  w: number;
-  h: number;
-}
-function fitsInOneBox(boxes: Gifts[ ]){
-  return boxes.sort((a,b) => (a.l + a.w + a.h) - (b.l + b.w + b.h)).every((box, i) => {
-    if( i === 0) return true;
-    const prev = boxes[i - 1];
-    return box.l > prev.l && box.w > prev.w && box.h > prev.h
-  })
- 
+function fitsInOneBox(boxes) {
+  return boxes
+    .sort((a, b) => a.l + a.w + a.h - (b.l + b.w + b.h))
+    .every((box, i) => {
+      if (i === 0) return true;
+      const prev = boxes[i - 1];
+      return box.l > prev.l && box.w > prev.w && box.h > prev.h;
+    });
 }
 
-const boxes = [
-  { l: 1, w: 1, h: 1 },
-  { l: 2, w: 2, h: 2 },
-  { l: 3, w: 1, h: 2 }
-]
-
-console.log(fitsInOneBox(boxes))

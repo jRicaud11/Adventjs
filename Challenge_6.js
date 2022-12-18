@@ -36,17 +36,16 @@ The cube has to be symmetrical.
 Make sure you use the correct symbols.
 Each line must be separated by a new line character \n except for the last one.*/
 
-function createCube(size:number) {
-  let cube:string = ""
+function createCube(size) {
+  let cube = "";
 
-
-  for(let i = 1; i <= size; i++){
-    cube += `${" ".repeat(size - i) }${"/\\".repeat(i)}${"_\\".repeat(size)}\n`
+  for (let i = 1; i <= size; i++) {
+    cube += `${" ".repeat(size - i)}${"/\\".repeat(i)}${"_\\".repeat(size)}\n`;
   }
 
-  for(let i = 0; i < size - 1; i++){
-    cube += `${" ".repeat(i)}${"\\/".repeat(size - i)}${"_/".repeat(size)}\n`
+  for (let i = 0; i < size - 1; i++) {
+    cube += `${" ".repeat(i)}${"\\/".repeat(size - i)}${"_/".repeat(size)}\n`;
   }
 
-  return (cube + `${" ".repeat(size-1)}\\/${"_/".repeat(size)}`);
+  return cube + `${" ".repeat(size - 1)}\\/${"_/".repeat(size)}`;
 }

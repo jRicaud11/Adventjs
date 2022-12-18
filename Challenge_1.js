@@ -21,9 +21,10 @@ Watch out!Make sure you put the right number of * to wrap completely the string.
 
 Good luck!*/
 
-
-function wrapping(gifts:Array<string>) {
-  return gifts.map(el => {
-    return el = `${"*".repeat(el.length + 2)}\n*${el}*\n${"*".repeat(el.length+2)}`
-  })
+function wrapping(gifts) {
+  return gifts.map((el) => {
+    return (el = `${"*".repeat(el.length + 2)}\n*${el}*\n${"*".repeat(
+      el.length + 2
+    )}`);
+  });
 }

@@ -35,37 +35,38 @@ giftsCities.length >= 1
 maxCities >= 1
 The number of maxCities can be greater than giftsCities.length*/
 
-function getMaxGifts(giftsCities:Array<number>, maxGifts:number, maxCities:number) {
-  if(Math.min(...giftsCities) > maxGifts) {
-    return 0
-  };
-  
-  giftsCities.sort((a,b) => b-a)
-  let combinations:number[][] = [];
-  let combo:number[] = [];
-  for(let i = 0; i < giftsCities.length; i++){
+function getMaxGifts(giftsCities, maxGifts, maxCities) {
+  if (Math.min(...giftsCities) > maxGifts) {
+    return 0;
+  }
+
+  giftsCities.sort((a, b) => b - a);
+  let combinations = [];
+  let combo = [];
+  for (let i = 0; i < giftsCities.length; i++) {
     combo = [];
-    combo.push(giftsCities[i])
-    combinations.push([giftsCities[i]])
-    for(let j = 0; j < giftsCities.length; j++){
-      if(i !== j){
-        if(combo.length === maxCities){
+    combo.push(giftsCities[i]);
+    combinations.push([giftsCities[i]]);
+    for (let j = 0; j < giftsCities.length; j++) {
+      if (i !== j) {
+        if (combo.length === maxCities) {
           combinations.push(combo);
           combo = [giftsCities[i]];
         }
-        combo.push(giftsCities[j])
-        combinations.push([...combo])
+        combo.push(giftsCities[j]);
+        combinations.push([...combo]);
       }
-     
     }
     combinations.push(combo);
-    
   }
-  let answer:number[] = combinations.map(c => {
-   return c.reduce((acc, el) => {return acc + el})
-  }).filter(gifts => {return gifts <= maxGifts})
-  return Math.max(...answer)
+  let answer = combinations
+    .map((c) => {
+      return c.reduce((acc, el) => {
+        return acc + el;
+      });
+    })
+    .filter((gifts) => {
+      return gifts <= maxGifts;
+    });
+  return Math.max(...answer);
 }
-
-
-

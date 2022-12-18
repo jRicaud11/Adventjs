@@ -15,6 +15,13 @@ Things to keep in mind:
 The gifts pack can't be splitted.
 Gifts and reindeers' names length will always be greater than 0.*/
 
-function distributeGifts(packOfGifts: Array<string>, reindeers:Array<string>) {
-    return Math.floor(reindeers.reduce((acc, el) => { return acc + el.length * 2}, 0) / packOfGifts.reduce((acc, el) => {return acc + el.length}, 0))
+function distributeGifts(packOfGifts, reindeers) {
+  return Math.floor(
+    reindeers.reduce((acc, el) => {
+      return acc + el.length * 2;
+    }, 0) /
+      packOfGifts.reduce((acc, el) => {
+        return acc + el.length;
+      }, 0)
+  );
 }

@@ -20,12 +20,13 @@ The year may be a leap year. Make the checks you need for it, if necessary.
 Although the holiday is December 31, the extra hours will be done the same year.
 Date.getDay() method returns the day of the week of a date. 0 is Sunday, 1 is Monday, etc.*/
 
-function countHours(year: number, holidays: Array<string>) {
-  const days:Array<number> = holidays.map(el => new Date(`${year}-${el.replace("/", "-")}`).getDay())
+function countHours(year, holidays) {
+  const days = holidays.map((el) =>
+    new Date(`${year}-${el.replace("/", "-")}`).getDay()
+  );
   let hours = 0;
-  for(let day of days){
-   if(day > 0 && day < 6)
-    hours+=2
+  for (let day of days) {
+    if (day > 0 && day < 6) hours += 2;
   }
-  return hours
+  return hours;
 }
